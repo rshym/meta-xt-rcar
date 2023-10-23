@@ -7,7 +7,7 @@ SRCREV = "6995e2de6891c724bfeb2db33d7b87775f913ad1"
 LINUX_VERSION = "6.4.0"
 
 KBUILD_DEFCONFIG_rcar = ""
-SRC_URI:append = " \
+SRC_URI = "${RENESAS_BSP_URL};nocheckout=1;branch=${BRANCH};protocol=https \
 	file://defconfig \
 	file://salvator-generic-domu.dts;subdir=git/arch/${ARCH}/boot/dts/renesas \
 	file://0001-WIP-Use-INVALID_BACKEND_DOMID-for-the-untraslated-de.patch \
@@ -16,6 +16,7 @@ SRC_URI:append = " \
 
 KERNEL_DEVICETREE:append = " renesas/salvator-generic-domu.dtb"
 KERNEL_DEVICETREE:r8a7795:remove = " renesas/r8a77950-salvator-x.dtb"
+KERNEL_DEVICETREE:remove:r8a779f0 = " renesas/r8a779f0-spider.dtb renesas/r8a779f0-spider-native.dtb"
 
 KERNEL_FEATURES:remove = "cfg/virtio.scc"
 
